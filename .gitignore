@@ -1,0 +1,11 @@
+
+## OS
+.DS_Store
+thumbs.db
+
+## Editors
+.dist
+.vscode
+
+## Node/Typescript
+node_modules
