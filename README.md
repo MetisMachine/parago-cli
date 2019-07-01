@@ -15,7 +15,7 @@ skafos
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g skafos
+$ brew install skafos
 $ skafos COMMAND
 running command...
 $ skafos (-v|--version|version)
