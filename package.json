@@ -1,15 +1,19 @@
 {
-  "name": "skafos",
+  "name": "Parago",
   "version": "0.0.0",
   "author": "Wess Cope @wess",
   "bin": {
-    "skafos": "./bin/ska"
+    "pgo": "./bin/pgo"
   },
   "bugs": "https://github.com/skafos/skafos/issues",
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^2",
+    "@types/js-yaml": "^3.12.1",
+    "cli-ux": "^5.3.0",
+    "fs-extra": "^8.1.0",
+    "js-yaml": "^3.13.1",
     "tslib": "^1"
   },
   "devDependencies": {
@@ -36,12 +40,13 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "skafos",
+    "hooks": {},
+    "bin": "pgo",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "skafos/skafos",
+  "repository": "skafos/parago-cli",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",

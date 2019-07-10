@@ -1,19 +1,20 @@
 //
-//  train.ts
+//  list.ts
 //  Parago
 // 
 //  Created by Wess Cope (wess@skafos.ai) on 07/01/19
-//  Copyright 2019 Skafos,llc.
+//  Copyright 2019 skafos.ai,llc.
 //
+
 
 import {flags} from '@oclif/command';
 import Command from './base';
 
-export default class Create extends Command {
-  static description = "Run model and train it with provided data source";
+export default class List extends Command {
+  static description = "List available generators";
 
   static examples = [
-    `$ pgo train --data=/path/to/example`
+    `$ pgo list`
   ]
 
   static flags = {
@@ -22,10 +23,9 @@ export default class Create extends Command {
   }
 
   static args = [{
-    name: 'data'
   }]
 
   async run() {
-    
+    console.log("parago: ", this.parago);
   }
 }
