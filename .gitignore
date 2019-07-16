@@ -7,5 +7,8 @@ thumbs.db
 .dist
 .vscode
 
+## Testing
+.venv
+
 ## Node/Typescript
 node_modules
