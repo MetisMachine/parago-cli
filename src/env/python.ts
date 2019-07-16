@@ -51,7 +51,7 @@ export class Python extends Environment {
   async setup(directory:string = process.cwd()) {
     let virtualenv = shell.which('virtualenv')
 
-    shell.config.silent = true;
+    shell.config.silent = false;
 
     console.log("Checking for python's virtualenv");
     if(virtualenv == null) {

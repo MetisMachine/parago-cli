@@ -23,11 +23,11 @@ export default class Create extends Command {
 
   static flags = {
     ...Command.flags,
-    help: flags.help({char: 'h'}),
-    yes:  flags.boolean({char: 'y'})
+    yes:  flags.boolean({char: 'y', description: 'Answers all prompts with defaults.'})
   }
 
   static args = [{
+    ...Command.args,
     name: 'project'
   }]
 
