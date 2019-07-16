@@ -12,6 +12,7 @@ import {flags}    from '@oclif/command';
 import cli        from 'cli-ux';
 import Command    from './base';
 import Config     from '../config';
+import * as Env   from '../env';
 
 export default class Create extends Command {
   static description = "Create a new Skafos project";
@@ -60,7 +61,18 @@ export default class Create extends Command {
       language:  `${language} ${languageVersion}`
     };
   
-    console.log("Creating config file");
+    console.log("Creating config file...");
     Config.write(Config.configTemplate);    
+
+    if(lang.toLowerCase() == 'python') {
+      const py = new Env.Python()
+    
+      if (!py.check(languageVersion)) {
+        console.error("Python version must be: " + languageVersion + ', but found: ' + py.version)
+        process.exit(-1);
+      }
+
+      py.setup();
+    }
   }
 }

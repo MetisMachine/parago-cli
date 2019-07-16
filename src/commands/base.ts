@@ -8,9 +8,11 @@
 
 import Command, {flags} from '@oclif/command'
 import Config           from '../config';
+import EnvVars          from '../env/vars';
 
 export default abstract class extends Command {
-  parago:object = Config.properties;
+  parago:object = Config.read()
+  envVars:object = EnvVars
 
   static flags = {
     help:     flags.help({char: 'h'}),
@@ -20,14 +22,28 @@ export default abstract class extends Command {
   log(msg:string, level:string = 'error') {
     switch(this.flags.debug) {
       case 'error':
-        console.error(msg);
+        console.error(msg)
       default:
-        console.log(msg);
+        console.log(msg)
     }
   }
 
+  processEnv() {
+    const paragoVars = this.parago.env || {}
+
+    for(let key in paragoVars) {
+      let val = paragoVars[key]
+
+      console.log(`Adding ${key} with value of ${val}`)
+
+      this.envVars.set(key.toUpperCase(), val)
+    }  
+  }
+
   async init() {
-    const {flags} = this.parse(this.constructor);
-    this.flags    = flags;
+    this.processEnv();
+
+    const {flags} = this.parse(this.constructor)
+    this.flags    = flags
   }
 }

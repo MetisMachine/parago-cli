@@ -14,12 +14,14 @@
     "cli-ux": "^5.3.0",
     "fs-extra": "^8.1.0",
     "js-yaml": "^3.13.1",
+    "shelljs": "^0.8.3",
     "tslib": "^1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1",
     "@types/node": "^10",
     "globby": "^8",
+    "jest": "^24.8.0",
     "ts-node": "^8",
     "typescript": "^3.3"
   },

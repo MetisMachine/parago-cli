@@ -6,7 +6,7 @@
  *  Copyright 2019 Skafos,llc.
  */
 
-import * as fs    from 'fs';
+import * as fs    from 'fs-extra'
 import * as path  from 'path';
 import ReadYaml   from './reader';
 import WriteYaml  from './writer';
@@ -39,12 +39,25 @@ const template =  {
 class Config {
   static configFile         = 'parago.yml';
   static configTemplate     = template;
-  static properties:object  = ReadYaml(path.join(process.cwd(), Config.configFile));
 
   static write(config:object) {
     let dir = path.join(process.cwd(), Config.configFile);
 
+    if(fs.existsSync(dir)) {
+      return;
+    }
+
     WriteYaml(config, dir);
+  }
+
+  static read() {
+    let dir = path.join(process.cwd(), Config.configFile);
+
+    if(!fs.existsSync(dir)) {
+      return;
+    }
+
+    return ReadYaml(path.join(process.cwd(), Config.configFile));
   }
 }
 
