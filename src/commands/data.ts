@@ -67,7 +67,7 @@ export default class Data extends Command {
       }
     })
     .forEach((current) => {
-      var cmd:string = current
+      var cmd:string = current as string
 
       shell.config.silent = false
 
