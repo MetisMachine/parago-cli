@@ -9,7 +9,7 @@
 import {flags} from '@oclif/command';
 import Command from './base';
 
-export default class Create extends Command {
+export default class Train extends Command {
   static description = "Run model and train it with provided data source";
 
   static examples = [
