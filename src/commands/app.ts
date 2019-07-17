@@ -6,9 +6,10 @@
 //  Copyright 2019 Skafos,llc.
 //
 
+import * as path    from 'path'
 import * as Express from 'express'
 import {flags}      from '@oclif/command'
-import cli     from 'cli-ux'
+import cli          from 'cli-ux'
 
 import Command from './base'
 
@@ -31,11 +32,21 @@ export default class App extends Command {
   }
 
   async run() {
-    const{flags, argv} = this.parse(App)
-    const {port} = flags
-    const portNumber = parseInt(port) || 7272
+    const{flags, argv}  = this.parse(App)
+    const {port}        = flags
+    const portNumber    = parseInt(port) || 7272
+    const staticPath    = path.join(
+      path.relative(process.cwd(), __dirname),
+      '..'
+    )
+
+    console.log('staticPath')
+
+    this.exit(0)
 
     const app = Express()
+
+    
 
     app.get('/', (req, res) => {
       res.send('Hello World!')
