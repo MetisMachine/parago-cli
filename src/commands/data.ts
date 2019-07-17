@@ -6,7 +6,7 @@
 //  Copyright 2019 FrenzyLabs,llc.
 //
 
-import Command    from './base'
+import Command    from '../base'
 import * as shell from 'shelljs'
 
 export default class Data extends Command {

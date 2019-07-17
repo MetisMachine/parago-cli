@@ -11,7 +11,7 @@ import * as Express from 'express'
 import {flags}      from '@oclif/command'
 import cli          from 'cli-ux'
 
-import Command from './base'
+import Command from '../base'
 
 
 export default class App extends Command {

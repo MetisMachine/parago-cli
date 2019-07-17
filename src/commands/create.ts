@@ -10,7 +10,7 @@ import * as path  from 'path';
 import * as os    from 'os';
 import {flags}    from '@oclif/command';
 import cli        from 'cli-ux';
-import Command    from './base';
+import Command    from '../base';
 import Config     from '../config';
 import * as Env   from '../env';
 

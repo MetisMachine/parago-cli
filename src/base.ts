@@ -7,8 +7,8 @@
 //
 
 import Command, {flags} from '@oclif/command'
-import Config           from '../config';
-import EnvVars          from '../env/vars';
+import Config           from './config';
+import EnvVars          from './env/vars';
 
 export default abstract class extends Command {
   parago:object   = Config.read()
@@ -24,7 +24,7 @@ export default abstract class extends Command {
     })
   }
 
-  static args = [{}]
+  static args = []
 
   log(msg:string, level:string = 'error') {
     switch(this.flags.debug) {

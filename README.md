@@ -9,101 +9,94 @@ skafos
 # Usage
 <!-- usage -->
 ```sh-session
-$ brew install skafos
-$ skafos COMMAND
+$ npm install -g parago
+$ pgo COMMAND
 running command...
-$ skafos (-v|--version|version)
-skafos/0.0.0 darwin-x64 node-v12.5.0
-$ skafos --help [COMMAND]
+$ pgo (-v|--version|version)
+parago/0.0.4 darwin-x64 node-v12.6.0
+$ pgo --help [COMMAND]
 USAGE
-  $ skafos COMMAND
+  $ pgo COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`skafos Gen [FILE]`](#skafos-gen-file)
-* [`skafos compile [TARGET]`](#skafos-compile-target)
-* [`skafos create [PROJECT]`](#skafos-create-project)
-* [`skafos deploy [PLATFORM]`](#skafos-deploy-platform)
-* [`skafos help [COMMAND]`](#skafos-help-command)
-* [`skafos repl`](#skafos-repl)
-* [`skafos train [DATA]`](#skafos-train-data)
+* [`pgo app`](#pgo-app)
+* [`pgo create [PROJECT]`](#pgo-create-project)
+* [`pgo data [CLEAN] [LOAD]`](#pgo-data-clean-load)
+* [`pgo help [COMMAND]`](#pgo-help-command)
+* [`pgo run`](#pgo-run)
+* [`pgo train`](#pgo-train)
 
-## `skafos Gen [FILE]`
+## `pgo app`
 
-describe the command here
-
-```
-USAGE
-  $ skafos Gen [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/Gen.ts](https://github.com/skafos/skafos/blob/v0.0.0/src/commands/Gen.ts)_
-
-## `skafos compile [TARGET]`
-
-Build current project for specific target
+Starts up web frontend.
 
 ```
 USAGE
-  $ skafos compile [TARGET]
+  $ pgo app
 
 OPTIONS
-  -h, --help  show CLI help
+  -h, --help       Shows this help message
+  -p, --port=port  [default: 7272] what port App server should run on
+  --env=env        Sets environment variables, overriding project config file)
 
 EXAMPLE
-  $ skafos compile --target=ios
+  $ pgo app start
 ```
 
-_See code: [src/commands/compile.ts](https://github.com/skafos/skafos/blob/v0.0.0/src/commands/compile.ts)_
+_See code: [src/commands/app.ts](https://github.com/skafos/parago-cli/blob/v0.0.4/src/commands/app.ts)_
 
-## `skafos create [PROJECT]`
+## `pgo create [PROJECT]`
 
 Create a new Skafos project
 
 ```
 USAGE
-  $ skafos create [PROJECT]
+  $ pgo create [PROJECT]
 
 OPTIONS
-  -h, --help  show CLI help
+  -h, --help  Shows this help message
+  -y, --yes   Answers all prompts with defaults.
+  --env=env   Sets environment variables, overriding project config file)
 
 EXAMPLE
-  $ skafos create myproject
+  $ pgo create myproject
 ```
 
-_See code: [src/commands/create.ts](https://github.com/skafos/skafos/blob/v0.0.0/src/commands/create.ts)_
+_See code: [src/commands/create.ts](https://github.com/skafos/parago-cli/blob/v0.0.4/src/commands/create.ts)_
 
-## `skafos deploy [PLATFORM]`
+## `pgo data [CLEAN] [LOAD]`
 
-Deploy project models to provider
+Data management using provided commands in config file
 
 ```
 USAGE
-  $ skafos deploy [PLATFORM]
+  $ pgo data [CLEAN] [LOAD]
+
+ARGUMENTS
+  CLEAN  Cleans data using command in config file
+  LOAD   Loads data using command in config file
 
 OPTIONS
-  -h, --help  show CLI help
+  -h, --help  Shows this help message
+  --env=env   Sets environment variables, overriding project config file)
 
-EXAMPLE
-  $ skafos deploy --platform=azure
+EXAMPLES
+  $ pgo data clean
+  $ pgo data load
 ```
 
-_See code: [src/commands/deploy.ts](https://github.com/skafos/skafos/blob/v0.0.0/src/commands/deploy.ts)_
+_See code: [src/commands/data.ts](https://github.com/skafos/parago-cli/blob/v0.0.4/src/commands/data.ts)_
 
-## `skafos help [COMMAND]`
+## `pgo help [COMMAND]`
 
-display help for skafos
+display help for pgo
 
 ```
 USAGE
-  $ skafos help [COMMAND]
+  $ pgo help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -114,37 +107,39 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.0/src/commands/help.ts)_
 
-## `skafos repl`
+## `pgo run`
 
-Interactive shell for current project
+Run user defined tasks in the config file
 
 ```
 USAGE
-  $ skafos repl
+  $ pgo run
 
 OPTIONS
-  -h, --help  show CLI help
+  -h, --help  Shows this help message
+  --env=env   Sets environment variables, overriding project config file)
 
 EXAMPLE
-  $ skafos repl
+  $ pgo run <task>
 ```
 
-_See code: [src/commands/repl.ts](https://github.com/skafos/skafos/blob/v0.0.0/src/commands/repl.ts)_
+_See code: [src/commands/run.ts](https://github.com/skafos/parago-cli/blob/v0.0.4/src/commands/run.ts)_
 
-## `skafos train [DATA]`
+## `pgo train`
 
 Run model and train it with provided data source
 
 ```
 USAGE
-  $ skafos train [DATA]
+  $ pgo train
 
 OPTIONS
-  -h, --help  show CLI help
+  -h, --help  Shows this help message
+  --env=env   Sets environment variables, overriding project config file)
 
 EXAMPLE
-  $ skafos train --data=/path/to/example
+  $ pgo train
 ```
 
-_See code: [src/commands/train.ts](https://github.com/skafos/skafos/blob/v0.0.0/src/commands/train.ts)_
+_See code: [src/commands/train.ts](https://github.com/skafos/parago-cli/blob/v0.0.4/src/commands/train.ts)_
 <!-- commandsstop -->
