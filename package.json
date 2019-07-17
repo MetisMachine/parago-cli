@@ -1,6 +1,6 @@
 {
   "name": "parago",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Wess Cope wess@skafos.ai",
   "bin": {
     "pgo": "./bin/pgo"
@@ -43,7 +43,6 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "hooks": {},
     "bin": "pgo",
     "plugins": [
       "@oclif/plugin-help"
