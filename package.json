@@ -37,9 +37,13 @@
   ],
   "homepage": "https://github.com/skafos/parago-cli",
   "keywords": [
-    "oclif"
+    "machine learning",
+    "mobile",
+    "AI",
+    "tensorflow",
+    "CoreML"
   ],
-  "license": "MIT",
+  "license": "Apache2",
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",

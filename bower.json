@@ -1,0 +1,25 @@
+{
+  "name": "parago",
+  "description": "",
+  "main": "lib/index.js",
+  "authors": [
+    "Wess Cope wess@skafos.ai"
+  ],
+  "license": "Apache2",
+  "keywords": [
+    "machine learning",
+    "mobile",
+    "AI",
+    "tensorflow",
+    "CoreML"
+  ],
+  "homepage": "https://github.com/skafos/parago-cli",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/components/",
+    "test",
+    "tests"
+  ]
+}

@@ -19,7 +19,7 @@ export default class Data extends Command {
 
   static args = [
     {
-      name: 'clean',
+      name: 'action',
       description: 'Cleans data using command in config file',
     },
     {
