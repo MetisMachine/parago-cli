@@ -1,7 +1,7 @@
 {
-  "name": "Parago",
-  "version": "0.0.0",
-  "author": "Wess Cope @wess",
+  "name": "parago",
+  "version": "0.0.1",
+  "author": "Wess Cope wess@skafos.ai",
   "bin": {
     "pgo": "./bin/pgo"
   },
@@ -35,7 +35,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/skafos/skafos",
+  "homepage": "https://github.com/skafos/parago-cli",
   "keywords": [
     "oclif"
   ],
