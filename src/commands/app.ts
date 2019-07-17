@@ -35,17 +35,15 @@ export default class App extends Command {
     const{flags, argv}  = this.parse(App)
     const {port}        = flags
     const portNumber    = parseInt(port) || 7272
-    const staticPath    = path.join(
+    const staticPath    = path.resolve(
       path.relative(process.cwd(), __dirname),
-      '..'
+      '..',
+      '../static'
     )
 
-    console.log('staticPath')
-
-    this.exit(0)
 
     const app = Express()
-
+    app.use(Express.static(staticPath))
     
 
     app.get('/', (req, res) => {
