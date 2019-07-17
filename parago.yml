@@ -13,5 +13,5 @@ commands:
     clean: ''
   train: ''
   export: ''
-tasks:
+tasks: # To silent out put of task, prefix with $ symbol
   example: echo "your script command here"
