@@ -19,6 +19,7 @@
       <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
+            <li ><span id="pyversion"></span></li>
             <li class="nav-item">
               <a class="nav-link active" href="#">
                 <span data-feather="home"></span>
@@ -46,5 +47,13 @@
 
   <script src="components/jquery/dist/jquery.min.js"></script>
   <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>
+    $.get('/api/version').done(function(res){
+      console.log(res);
+      if (res.data) {
+        $("#pyversion").html(res.data)
+      }
+    })
+  </script>
 </body>
 </html>

@@ -15,6 +15,10 @@ import Environment from './environment'
 
 export class Python extends Environment {
 
+  getVersion():string {
+    return shell.exec("python --version").toString()
+  }
+
   check(expectedVersion:string = ">= 3"):boolean {
     shell.config.silent = true;
 

@@ -12,4 +12,4 @@ thumbs.db
 
 ## Node/Typescript
 node_modules
-static/components/*
+**/*/static/components/*

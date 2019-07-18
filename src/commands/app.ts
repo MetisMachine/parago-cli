@@ -12,6 +12,7 @@ import {flags}      from '@oclif/command'
 import cli          from 'cli-ux'
 
 import Command from '../base'
+import Dashboard from '../dashboard'
 
 
 export default class App extends Command {
@@ -35,25 +36,7 @@ export default class App extends Command {
     const{flags, argv}  = this.parse(App)
     const {port}        = flags
     const portNumber    = parseInt(port) || 7272
-    const staticPath    = path.resolve(
-      path.relative(process.cwd(), __dirname),
-      '..',
-      '../static'
-    )
-
-
-    const app = Express()
-    app.use(Express.static(staticPath))
-    
-
-    app.get('/', (req, res) => {
-      res.send('Hello World!')
-    })
-
-
-    app.listen(portNumber, () => {
-      console.log(`Parago app listening on ${portNumber}`)
-    })
+    new Dashboard(portNumber).start()
 
     cli.open(`http://localhost:${portNumber}`)
   }
