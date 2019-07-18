@@ -3,7 +3,7 @@
 //  Parago
 // 
 //  Created by Wess Cope (wess@skafos.ai) on 07/01/19
-//  Copyright 2019 Skafos,llc.
+//  Copyright 2019 Skafos, LLC.
 //
 
 import Command from '../base';

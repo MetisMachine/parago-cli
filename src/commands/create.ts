@@ -3,7 +3,7 @@
 //  Parago
 // 
 //  Created by Wess Cope (wess@skafos.ai) on 07/01/19
-//  Copyright 2019 Skafos,llc.
+//  Copyright 2019 Skafos, LLC.
 //
 
 import * as path  from 'path';
@@ -15,7 +15,7 @@ import Config     from '../config';
 import * as Env   from '../env';
 
 export default class Create extends Command {
-  static description = "Create a new Skafos project";
+  static description = "Create a new Parago project";
 
   static examples = [
     `$ pgo create myproject`

@@ -2,8 +2,8 @@
 //  data.ts
 //  Parago
 // 
-//  Created by Wess Cope (wess@frenzylabs.com) on 07/17/19
-//  Copyright 2019 FrenzyLabs,llc.
+//  Created by Wess Cope (wess@skafos.ai) on 07/17/19
+//  Copyright 2019 Skafos, LLC.
 //
 
 import Command    from '../base'
