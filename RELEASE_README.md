@@ -68,7 +68,8 @@ Documentation and the sort will be here when we release this July.
 Instructions on how to make generators will also be part of the July release.  That said, you will be able to make your own and share with the community.
 
 ## Contributing
-Guidelines for contributions will also be made available this July.  We want you to help!
+Guidelines for contributions will also be made available this July. If you want to help, send us an email at [hello@skafos.ai](mailto:hello@skafos.ai).
+
 
 ## Get In Touch
 While we are getting ready and getting all our docs and such in place, we would love more involvement and are wide open to feedback, inspirations and ideas. Please throw a **star** or **watch**  or even an **[issue](https://github.com/skafos/perago/issues)** on Parago, or throw out a **[tweet](https://twitter.com/intent/tweet?text=Check%20out%20https://github.com/skafos/perago%20if%20you%20are%20looking%20for%20an%20easier%20way%20to%20build%20machine%20learning%20models%20for%20your%20apps.)**.
