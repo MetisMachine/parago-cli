@@ -29,12 +29,12 @@ const ConfigCreate = async (cfg:object = Config.configTemplate, projectPath:stri
 
   var language:string = config.system.language
   
-  if(ask == true) {
-    let lang  = await cli.prompt('Language', {default: 'python'})
-    let langv = await cli.prompt('Language version', {default: '>= 3.3'})
+  // if(ask == true) {
+  //   let lang  = await cli.prompt('Language', {default: 'python'})
+  //   let langv = await cli.prompt('Language version', {default: '>= 3.3'})
 
-    language = `${lang} ${langv}`
-  }
+  //   language = `${lang} ${langv}`
+  // }
 
   
   config['name']        = name

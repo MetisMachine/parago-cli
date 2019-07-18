@@ -11,9 +11,9 @@ env:
   example: value
 commands:
   data:
-    load: 'echo "default load command"'
-    clean: 'echo "default clean command"'
-  train: ''
-  export: ''
+    load: echo "default load command"
+    clean: echo "default clean command"
+  train: echo "default train command"
+  export: $echo "default export command"
 tasks: 
   example: echo "your script command here"
