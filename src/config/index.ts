@@ -18,7 +18,7 @@ const template =  {
   author:   '',
   license:  '',
   system: { 
-    language: ''
+    language: 'python >= 3.3'
   },
   env: { 
     example: 'value'
@@ -40,12 +40,8 @@ class Config {
   static configFile         = 'parago.yml';
   static configTemplate     = template;
 
-  static write(config:object) {
-    let dir = path.join(process.cwd(), Config.configFile);
-
-    if(fs.existsSync(dir)) {
-      return;
-    }
+  static write(config:object, to:string = process.cwd()) {
+    let dir = path.join(to, Config.configFile);
 
     WriteYaml(config, dir);
   }

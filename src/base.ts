@@ -6,21 +6,31 @@
 //  Copyright 2019 Skafos, LLC.
 //
 
+import * as os          from 'os'
+import * as path        from 'path'
 import Command, {flags} from '@oclif/command'
-import Config           from './config';
-import EnvVars          from './env/vars';
+import Config           from './config'
+import EnvVars          from './env/vars'
 
 export default abstract class extends Command {
+  paths = {
+    root:       path.join(os.homedir(), '.parago'),
+    generators: path.join(os.homedir(), '.parago', 'generators')
+  }
+
   parago:object   = Config.read()
   envVars:object  = EnvVars
 
   static strict = false 
 
   static flags = {
-    help: flags.help({char: 'h', description: 'Shows this help message'}),
+    help: flags.help({
+      char: 'h', 
+      description: 'Shows this help message'
+    }),
     env: flags.string({
-      description: 'Sets environment variables, overriding project config file)',
-      required: false
+      description:  'Sets environment variables, overriding project config file)',
+      required:     false
     })
   }
 
@@ -57,7 +67,8 @@ export default abstract class extends Command {
   processEnv() {
     console.log("Setting environment variables from config...");
 
-    const paragoVars = this.parago.env || {}
+    const paragoConfig  = this.parago || {}
+    const paragoVars    = paragoConfig.env || {}
 
     for(let key in paragoVars) {
       this.envVars.set(key, paragoVars[key])
