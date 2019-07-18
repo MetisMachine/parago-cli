@@ -7,7 +7,7 @@ By abstracting common machine learning patterns and tasks, Parago is simple enou
 Given the wide array of tools and technologies created to drive ML solutions, building & deploying machine learning models for apps *should* be simpler. At [Skafos](https://skafos.ai), we are tired of losing countless hours:
 - learning different training frameworks
 - fighting configuration and infrastructure
-- customizing every aspect of each new ML solution (*why start from scratch?*)
+- customizing every aspect of each new ML solution.. *why start from scratch?*
 
 If you are like us, you would rather focus that time working on your apps. So we built Parago.
 
