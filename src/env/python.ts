@@ -55,9 +55,9 @@ export class Python extends Environment {
 
     console.log("Checking for python's virtualenv");
     if(virtualenv == null) {
-      let response = await cli.prompt('virtualenv is not available, install it now? [y/n]', {default: 'y'}).toLowerCase()
+      let response = await cli.prompt('virtualenv is not available, install it now? [y/n]', {default: 'y'})
       
-      if(['y', 'yes'].includes(response)) {
+      if(['y', 'yes'].includes(response.toLowerCase())) {
         shell.exec("pip install virtualenv")
 
         self.setup(directory)
