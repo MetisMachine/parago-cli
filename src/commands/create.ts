@@ -69,12 +69,16 @@ export default class Create extends Command {
       cli.action.stop()
 
       let yaml = ReadYaml(path.join(projectPath, 'parago.yml'))
-
-      await ConfigCreate(
-        yaml, 
-        projectPath,
-        !flags.yes
-      )
+      try {
+        await ConfigCreate(
+          yaml, 
+          projectPath,
+          !flags.yes
+        )
+      } catch(e) {
+        console.error(e.message)
+        this.exit(-1)
+      }
     } else {
       let name = curDir
 
@@ -82,11 +86,16 @@ export default class Create extends Command {
 
       cli.action.stop()
       
-      await ConfigCreate(
-        ReadYaml(path.join(cwd, 'parago.yml')), 
-        cwd,
-        !flags.yes
-      )
+      try {
+        await ConfigCreate(
+          ReadYaml(path.join(cwd, 'parago.yml')), 
+          cwd,
+          !flags.yes
+        )
+      } catch(e) {
+        console.error(e.message)
+        this.exit(-1)
+      }
     }
 
     
