@@ -82,7 +82,7 @@ export class Python extends Environment {
       console.log('\nActivate your python virtual environment type:')
     }
     
-    console.log(`source ${dir}/bin/activate\n\n`)
+    console.log(`source ${dir}/bin/activate && pip install -r requirements.txt\n\n`)
   }
 
 }

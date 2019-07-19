@@ -91,16 +91,6 @@ export default class Create extends Command {
 
     
     
-    // if(lang.toLowerCase() == 'python') {
-    //   const py = new Env.Python()
-
-    //   if (!py.check(languageVersion)) {
-    //     console.error("Python version must be: " + languageVersion + ', but found: ' + py.version)
-    //     process.exit(-1);
-    //   }
-
-    //   py.setup();
-    // }
 
   }
 }

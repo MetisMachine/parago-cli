@@ -66,12 +66,17 @@ export default abstract class extends Command {
 
   processEnv() {
 
-    const paragoConfig  = this.parago || {}
+    this.parago = this.parago || Config.read()
+
+    let paragoConfig = this.parago
+
+    if(!paragoConfig) { return }
+    
     const paragoVars    = paragoConfig.env || {}
 
-    if(paragoVars.length > 0) {
+    if(Object.keys(paragoVars).length > 0) {
       console.log("Setting environment variables from config...");
-      
+
       for(let key in paragoVars) {
         this.envVars.set(key, paragoVars[key])
       }  
@@ -79,9 +84,11 @@ export default abstract class extends Command {
   }
 
   async init() {
+    this.parago = this.parago || Config.read()
     const {flags} = this.parse(this.constructor)
 
     this.processEnv();
+    
     if(flags.env && flags.env.length > 0) {
       this.processAdhocEnv(flags.env)
     }

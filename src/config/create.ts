@@ -5,13 +5,22 @@
 //  Created by Wess Cope (wess@skafos.ai) on 07/18/19
 //  Copyright 2019 Skafos, LLC.
 //
-import * as path  from 'path';
-import * as os    from 'os';
-import {flags}    from '@oclif/command';
-import cli        from 'cli-ux';
-import Command    from '../base';
-import Config     from '../config';
-import * as Env   from '../env';
+import * as path  from 'path'
+import * as os    from 'os'
+import cli        from 'cli-ux'
+import Config     from '../config'
+import * as Env from '../env'
+
+const SetupPython = () => {
+  const py = new Env.Python()
+
+  if (!py.check(">= 3")) {
+    console.error("Python version must be: >= 3")
+    process.exit(-1)
+  }
+
+  py.setup()
+}
 
 const ConfigCreate = async (cfg:object = Config.configTemplate, projectPath:string = process.cwd(), ask:boolean = false) => {
   var config = cfg
@@ -51,6 +60,12 @@ const ConfigCreate = async (cfg:object = Config.configTemplate, projectPath:stri
   cli.action.start("Creating config file...")
   Config.write(config, projectPath)
   cli.action.stop()
+
+  if(language.toLowerCase().split(' ').includes('python')) {
+    cli.action.start("Setting up python virualenv")
+    SetupPython() 
+    cli.action.stop()
+  }
 }
 
 export default ConfigCreate

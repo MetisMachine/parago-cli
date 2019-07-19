@@ -8,11 +8,11 @@
 
 const EnvVars = {
   get: (name:string) => {
-    return process.env[name.toUpperCase()]
+    return process.env[name]
   },
 
   set: (name:string, value:any) => {
-    process.env[name.toUpperCase()] = value
+    process.env[name] = value
   }
 }
 
