@@ -33,6 +33,11 @@ Install with npm:
 $ npm install parago
 ```
 
+# Usage
+  <!-- usage -->
+  # Commands
+  <!-- commands -->
+
 ## Managing Environments
 Environment setup is a hard problem to solve globally, especially when it comes to machine learning projects. Until we have a better solution (give us some ideas/feedback), we leave this up to the user to setup a virtual environment using [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
 
