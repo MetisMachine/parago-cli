@@ -81,7 +81,7 @@ export default abstract class CommandBase extends Command {
 
   async init() {
     this.parago   = this.parago || Config.read() || Config.configTemplate
-    const {args, flags} = this.parse(<Input<any>>this.constructor)
+    const {args, flags} = this.parse(CommandBase)
 
     this.processEnv();
     
