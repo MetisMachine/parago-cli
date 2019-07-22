@@ -62,7 +62,7 @@ const ConfigCreate = async (cfg:object = Config.configTemplate, projectPath:stri
   cli.action.stop()
 
   if(language.toLowerCase().split(' ').includes('python')) {
-    cli.action.start("Setting up python virualenv")
+    cli.action.start("Setting up python virtual environment\n")
     SetupPython() 
     cli.action.stop()
   }
