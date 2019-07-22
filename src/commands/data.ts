@@ -8,6 +8,7 @@
 
 import Command    from '../base'
 import * as shell from 'shelljs'
+import Config from '../config';
 
 export default class Data extends Command {
   static description = "Data management using provided commands in config file";
@@ -28,24 +29,28 @@ export default class Data extends Command {
     }
   ]
 
-  runLoad():string {
-    if(!this.parago.commands.data.load || this.parago.commands.data.load.length < 1) { 
+  runLoad() {
+    let _parago:any = this.parago as any
+
+    if(!_parago.commands.data.load || _parago.commands.data.load.length < 1) { 
       console.log("Invalid data load command provided in config")
 
       this.exit(-1)
     }
 
-    return this.parago.commands.data.load
+    return _parago.commands.data.load
   }
 
-  runClean():string {
-    if(!this.parago.commands.data.clean || this.parago.commands.data.clean.length < 1) { 
+  runClean() {
+    let _parago:any = this.parago as any
+
+    if(!_parago.commands.data.clean || _parago.commands.data.clean.length < 1) { 
       console.log("Invalid data clean command provided in config")
 
       this.exit(-1)
     }
 
-    return this.parago.commands.data.clean
+    return _parago.commands.data.clean
   }
 
 

@@ -6,7 +6,7 @@
 //  Copyright 2019 Skafos, LLC.
 //
 
-import * as axios               from 'axios'
+import axios               from 'axios'
 import {safeLoad, DumpOptions}  from 'js-yaml'
 import cli                      from 'cli-ux'
 import Command                  from '../base'
@@ -19,9 +19,6 @@ export default class List extends Command {
   static examples = [
     `$ pgo train`
   ]
-
-  static flags = {
-  }
 
   async run() {
     const {flags} = this.parse(List)
@@ -52,7 +49,7 @@ export default class List extends Command {
           minWidth: 32
         },
         description: {
-          get: row => row.description
+          get: row => row['description']
         }
       })
 

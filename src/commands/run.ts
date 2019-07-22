@@ -19,15 +19,16 @@ export default class Run extends Command {
   ]
 
   async run() {
-    let {argv} = this.parse(Run)
+    let _parago = this.parago as any
+    let {argv}  = this.parse(Run)
     
 
     if(argv.length < 1) { return }
 
     let tasks = argv
-    .filter((arg) => { return Object.keys(this.parago.tasks).includes(arg)})
+    .filter((arg) => { return Object.keys(_parago.tasks).includes(arg)})
     .map((task) => {
-      return this.parago.tasks[task]
+      return _parago.tasks[task]
     });
 
     if(tasks.length < 1) {

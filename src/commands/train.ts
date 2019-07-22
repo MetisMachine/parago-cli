@@ -17,8 +17,15 @@ export default class Train extends Command {
   ]
 
   async run() {
-    let cmd = this.parago.commands.train || ''
+    let _parago:any = this.parago as any
 
+    if(!_parago) {
+      console.error(`No parago.yml file present in ${process.cwd()}`)
+      this.exit(-1)
+    }
+
+    let cmd = _parago.commands.train
+    
     if(cmd.length > 0) {
       if(cmd.startsWith('$')) {
         shell.config.silent = true
@@ -29,7 +36,12 @@ export default class Train extends Command {
       shell.exec(cmd)
       
       shell.config.silent = false
+    } else {
+      console.error("No config file or no train command defined")
+
+      this.exit(-1)
     }
 
   }
+
 }

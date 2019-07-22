@@ -11,7 +11,7 @@ import * as path  from 'path';
 import ReadYaml   from './reader';
 import WriteYaml  from './writer';
 
-const template =  {
+const template  = {
   name:         '',
   description:  '',
   version:  '',
@@ -37,10 +37,10 @@ const template =  {
 }
 
 class Config {
-  static configFile         = 'parago.yml';
-  static configTemplate     = template;
+  static configFile     = 'parago.yml';
+  static configTemplate = template;
 
-  static write(config:object, to:string = process.cwd()) {
+  static write(config, to:string = process.cwd()) {
     let dir = path.join(to, Config.configFile);
 
     WriteYaml(config, dir);

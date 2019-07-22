@@ -14,6 +14,7 @@ import cli        from 'cli-ux';
 import Environment from './environment'
 
 export class Python extends Environment {
+  version:number
 
   check(expectedVersion:string = ">= 3"):boolean {
     shell.config.silent = true;
