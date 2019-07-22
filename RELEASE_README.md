@@ -51,14 +51,14 @@ conda deactivate
 
 ## Example: Image Classification
 
-Use this to build an app that allows you to identify objects within an image:
+Use this to build an app that allows you to classify objects within an image:
 
 ```bash
 # List what model generators are available
 pgo list
 
 > Available Generators.
-    - turicreate-image-classifier   : Identify specific images within an image
+    - turicreate-image-classifier   : classify objects within an image
 
 # Create a project with an Image Classification generator
 pgo create myImageClassifer -g turicreate-image-classifier
