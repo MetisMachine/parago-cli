@@ -17,12 +17,14 @@ export default class Deploy extends Command {
   ]
 
   async run() {
-    if(!this.parago) {
+    let _parago:any = this.parago as any
+
+    if(!_parago) {
       console.error(`No parago.yml file present in ${process.cwd()}`)
       this.exit(-1)
     }
 
-    let cmd = this.parago.commands.deploy
+    let cmd = _parago.commands.deploy
     
     if(cmd.length > 0) {
       if(cmd.startsWith('$')) {

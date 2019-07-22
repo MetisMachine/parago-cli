@@ -1,38 +1,19 @@
-/*
- *  parser.ts
- *  skafos
- * 
- *  Created by Wess Cope (wess@skafos.ai) on 07/10/19
- *  Copyright 2019 Skafos, LLC.
- */
-
-import {readFileSync}           from 'fs';
-import {safeLoad, DumpOptions}  from 'js-yaml';
-
+import { DumpOptions } from 'js-yaml';
 /**
  * FS Options
  * @typedef {fsOptions} fsOptions Options for the file reader
  * @property
  */
-type FileOptions = {
-  encoding?:
-    | 'utf8'
-    | 'ascii'
-    | 'utf16le'
-    | 'ucs2'
-    | 'base64'
-    | 'latin1'
-    | 'binary'
-    | 'hex';
-  flag?: string;
+declare type FileOptions = {
+    encoding?: 'utf8' | 'ascii' | 'utf16le' | 'ucs2' | 'base64' | 'latin1' | 'binary' | 'hex';
+    flag?: string;
 };
-
 /**
  * ParserOptions for configuring both `fs` and `js-yaml`
  * See [js-yaml configuration](https://github.com/nodeca/js-yaml#safeload-string---options-) for more details
  * Also see {@link fsOptions}
  * @typedef {ParserOptions} ParserOptions Options for the YAML parser
- * 
+ *
  * @property {number}           [indent=2] indentation width to use (in spaces).
  * @property {boolean}          [noArrayIndent=false] when true, will not add an indentation level to array elements
  * @property {boolean}          [skipInvalid=false] do not throw on invalid types (like function in the safe schema) and skip pairs and single values with such types
@@ -45,51 +26,6 @@ type FileOptions = {
  * @property {boolean}          [noCompatMode=false] if `true` don't try to be compatible with older yaml versions. Currently: don't quote "yes", "no" and so on, as required for YAML 1.1
  * @property {boolean}          [condenseFlow=false] if `true` flow sequences will be condensed, omitting the space between `a, b`. Eg. `'[a,b]'`
  */
-
-export type ParserOptions = DumpOptions & FileOptions;
-
-class ParserError extends Error {
-  /**
-   * Create an ParserError
-   * @param {string} message The message the error should show
-   * @private
-   */
-  constructor (message: string) {
-    super(message);
-
-    this.message  = message;
-    this.name     = 'ParserError';
-  }  
-}
-
-
-export const ReadYaml = (filename: string, options?: ParserOptions) => {
-  let str;
-
-  const opts = {
-    ...options,
-    filename: filename
-  };
-
-  try {
-    str = readFileSync(filename, options);
-  } catch(err) {
-      throw new ParserError(err.toString());
-  }
-
-  try {
-    const data = safeLoad(str.toString('utf8'), opts);
-
-    if(typeof data !== 'object')
-      throw new ParserError('Invalid yaml file');
-
-    return (data as object);
-  } catch(err) {
-    if (/(?:not_valid_yaml)/i.test(err.toString())) {
-      throw new ParserError('Invalid YAML format in yaml file: ' + err.toString());
-    }
-    throw new ParserError(err.toString());   
-  }
-};
-
+export declare type ParserOptions = DumpOptions & FileOptions;
+export declare const ReadYaml: (filename: string, options?: ParserOptions) => object;
 export default ReadYaml;

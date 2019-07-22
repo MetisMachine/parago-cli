@@ -17,7 +17,9 @@ export default class Train extends Command {
   ]
 
   async run() {
-    var cmd = this.parago.commands.export || ''
+    let _parago:any = this.parago as any
+
+    var cmd = _parago.commands.export || ''
 
     if(cmd.length > 0) {
       if(cmd.startsWith('$')) {

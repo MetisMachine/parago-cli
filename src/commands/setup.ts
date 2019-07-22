@@ -25,6 +25,7 @@ export default class Setup extends Command {
   ]
 
   static flags = {
+    ...Command.flags,
     force: flags.boolean({
       char:         'f', 
       description:  'If already setup, remove previous and setup as new'

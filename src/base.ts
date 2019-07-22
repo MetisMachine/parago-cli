@@ -9,21 +9,23 @@
 import * as os          from 'os'
 import * as path        from 'path'
 import Command, {flags} from '@oclif/command'
+import {Input}          from '@oclif/parser'
 import Config           from './config'
 import EnvVars          from './env/vars'
 
-export default abstract class extends Command {
+export default abstract class CommandBase extends Command {
+  static strict = false
+
   paths = {
     root:       path.join(os.homedir(), '.parago'),
     generators: path.join(os.homedir(), '.parago', 'generators')
   }
 
-  parago:object   = Config.read()
-  envVars:object  = EnvVars
-
-  static strict = false 
+  parago          = Config.read() || Config.configTemplate
+  envVars:EnvVars = new EnvVars()
 
   static flags = {
+    ...Command.flags,
     help: flags.help({
       char: 'h', 
       description: 'Shows this help message'
@@ -36,14 +38,8 @@ export default abstract class extends Command {
 
   static args = []
 
-  log(msg:string, level:string = 'error') {
-    switch(this.flags.debug) {
-      case 'error':
-        console.error(msg)
-      default:
-        console.log(msg)
-    }
-  }
+  flags = {}
+  args  = []
 
   processAdhocEnv(args:string = "") {
     if(args.length < 1) { return; }
@@ -66,13 +62,13 @@ export default abstract class extends Command {
 
   processEnv() {
 
-    this.parago = this.parago || Config.read()
+    this.parago = this.parago || Config.read() || Config.configTemplate
 
-    let paragoConfig = this.parago
+    let paragoConfig:any = this.parago as any
 
     if(!paragoConfig) { return }
     
-    const paragoVars    = paragoConfig.env || {}
+    const paragoVars = paragoConfig.env || {}
 
     if(Object.keys(paragoVars).length > 0) {
       console.log("Setting environment variables from config...");
@@ -84,8 +80,8 @@ export default abstract class extends Command {
   }
 
   async init() {
-    this.parago = this.parago || Config.read()
-    const {flags} = this.parse(this.constructor)
+    this.parago   = this.parago || Config.read() || Config.configTemplate
+    const {args, flags} = this.parse(<Input<any>>this.constructor)
 
     this.processEnv();
     
@@ -93,7 +89,7 @@ export default abstract class extends Command {
       this.processAdhocEnv(flags.env)
     }
     
-    this.flags = flags
+    this.flags  = flags
+    this.args   = args
   }
-
 }

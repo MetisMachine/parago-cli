@@ -6,14 +6,18 @@
 //  Copyright 2019 Skafos, LLC.
 //
 
-const EnvVars = {
-  get: (name:string) => {
-    return process.env[name]
-  },
+export default class EnvVars {
+  _all:object = {
 
-  set: (name:string, value:any) => {
+  }
+
+  get(name:string) {
+    return process.env[name]
+  }
+
+  set(name:string, value:any) {
+    this._all[name] = value
+
     process.env[name] = value
   }
 }
-
-export default EnvVars

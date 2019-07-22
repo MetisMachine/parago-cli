@@ -22,7 +22,7 @@ const SetupPython = () => {
   py.setup()
 }
 
-const ConfigCreate = async (cfg:object = Config.configTemplate, projectPath:string = process.cwd(), ask:boolean = false) => {
+const ConfigCreate = async (cfg, projectPath:string = process.cwd(), ask:boolean = false) => {
   var config = cfg
 
   let basename    = path.basename(process.cwd())
@@ -37,15 +37,7 @@ const ConfigCreate = async (cfg:object = Config.configTemplate, projectPath:stri
   let license     = ask == false ? lic       : await cli.prompt('License', {default: lic})
 
   var language:string = config.system.language
-  
-  // if(ask == true) {
-  //   let lang  = await cli.prompt('Language', {default: 'python'})
-  //   let langv = await cli.prompt('Language version', {default: '>= 3.3'})
 
-  //   language = `${lang} ${langv}`
-  // }
-
-  
   config['name']        = name
   config['description'] = description
   config['version']     = version
