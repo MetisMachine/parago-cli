@@ -23,14 +23,9 @@ Our tenets:
 
 ## Installation
 
-Install with Homebrew:
-```bash
-$ brew install parago
-```
-
 Install with npm:
 ```bash
-$ npm install parago
+$ npm install -g parago
 ```
 
 # Usage

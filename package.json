@@ -1,6 +1,6 @@
 {
   "name": "parago",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Wess Cope wess@skafos.ai",
   "bin": {
     "pgo": "./bin/pgo"
