@@ -33,6 +33,22 @@ Install with npm:
 $ npm install parago
 ```
 
+## Managing Environments
+Environment setup is a hard problem to solve globally, especially when it comes to machine learning projects. Until we have a better solution (give us some ideas/feedback), we leave this up to the user to setup a virtual environment using [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
+
+Each generator will have an `environment.yml` file included for you. Create a new [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html#managing-environments) for the project with:
+```
+conda env create -f environment.yml
+```
+Activate:
+```
+conda activate <env-name>
+```
+Deactivate:
+```
+conda deactivate
+```
+
 ## Example: Image Classification
 
 Use this to build an app that allows you to identify objects within an image:
@@ -42,15 +58,19 @@ Use this to build an app that allows you to identify objects within an image:
 pgo list
 
 > Available Generators.
-    - ImageClassifier   : Identify specific images within an image
-    - ObjectDetection   : Idenfity what objects are in an image or video
-    - Recommender       : Personilize apps or the content displayed in your apps
+    - turicreate-image-classifier   : Identify specific images within an image
 
-# Create a model project with an Image Classification generator
-pgo create myImageClassifer --generator=ImageClassifier
+# Create a project with an Image Classification generator
+pgo create myImageClassifer -g turicreate-image-classifier
 
 # Go to that directory
 cd myImageClassifier
+
+# Create the conda virtual env
+conda env create -f environment.yml
+
+# Activate the conda virtual env
+conda activate turicreate-image-classifier
 
 # Pull down the default data. You can change this whenever you want to customize
 pgo data load
@@ -59,7 +79,7 @@ pgo data load
 pgo train
 
 #Export the trained model to your deploy target
-pgo export --target=coreml
+pgo export --output=coreml
 ```
 
 Documentation and the sort will be here when we release this July.
