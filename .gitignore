@@ -7,6 +7,10 @@ thumbs.db
 .dist
 .vscode
 
+## Build
+dist
+tmp
+
 ## Testing
 .venv
 
