@@ -7,6 +7,7 @@
 //
 
 import * as shell from 'shelljs'
+import * as ChildProcess from 'child_process'
 import Command    from '../base'
 
 export default class Deploy extends Command {
@@ -32,8 +33,14 @@ export default class Deploy extends Command {
         
         cmd = cmd.replace('$', '')
       }
+      let res = cmd.split(" ")
+      let commandName = res[0]
+      let cmdArgs = res.slice(1)
 
-      shell.exec(cmd)
+      // shelljs can't be used to run interactive commands 
+      // https://github.com/shelljs/shelljs/wiki/FAQ#running-interactive-programs-with-exec
+      ChildProcess.execFileSync(commandName, cmdArgs, {stdio: 'inherit'});
+      
       
       shell.config.silent = false
     } else {
