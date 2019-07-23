@@ -35,7 +35,7 @@ $ npm install -g parago
 $ pgo COMMAND
 running command...
 $ pgo (-v|--version|version)
-parago/0.0.2 darwin-x64 node-v12.5.0
+parago/0.0.3 darwin-x64 node-v12.5.0
 $ pgo --help [COMMAND]
 USAGE
   $ pgo COMMAND
@@ -74,7 +74,7 @@ EXAMPLE
   $ pgo create myproject
 ```
 
-_See code: [src/commands/create.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/create.ts)_
+_See code: [src/commands/create.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/create.ts)_
 
 ## `pgo data [ACTION] [LOAD]`
 
@@ -97,7 +97,7 @@ EXAMPLES
   $ pgo data load
 ```
 
-_See code: [src/commands/data.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/data.ts)_
+_See code: [src/commands/data.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/data.ts)_
 
 ## `pgo deploy`
 
@@ -115,7 +115,7 @@ EXAMPLE
   $ pgo deploy
 ```
 
-_See code: [src/commands/deploy.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/deploy.ts)_
+_See code: [src/commands/deploy.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/deploy.ts)_
 
 ## `pgo export`
 
@@ -133,7 +133,7 @@ EXAMPLE
   $ pgo export
 ```
 
-_See code: [src/commands/export.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/export.ts)_
+_See code: [src/commands/export.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/export.ts)_
 
 ## `pgo help [COMMAND]`
 
@@ -168,7 +168,7 @@ EXAMPLE
   $ pgo train
 ```
 
-_See code: [src/commands/list.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/list.ts)_
+_See code: [src/commands/list.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/list.ts)_
 
 ## `pgo run`
 
@@ -186,7 +186,7 @@ EXAMPLE
   $ pgo run <task>
 ```
 
-_See code: [src/commands/run.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/run.ts)_
+_See code: [src/commands/run.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/run.ts)_
 
 ## `pgo setup`
 
@@ -205,7 +205,7 @@ EXAMPLE
   $ pgo setup
 ```
 
-_See code: [src/commands/setup.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/setup.ts)_
+_See code: [src/commands/setup.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/setup.ts)_
 
 ## `pgo train`
 
@@ -223,7 +223,7 @@ EXAMPLE
   $ pgo train
 ```
 
-_See code: [src/commands/train.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/train.ts)_
+_See code: [src/commands/train.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/train.ts)_
 
 ## `pgo update`
 
@@ -241,7 +241,7 @@ EXAMPLE
   $ pgo update
 ```
 
-_See code: [src/commands/update.ts](https://github.com/skafos/parago-cli/blob/v0.0.2/src/commands/update.ts)_
+_See code: [src/commands/update.ts](https://github.com/skafos/parago-cli/blob/v0.0.3/src/commands/update.ts)_
 <!-- commandsstop -->
 
 ## Managing Environments

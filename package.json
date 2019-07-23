@@ -1,6 +1,6 @@
 {
   "name": "parago",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Wess Cope wess@skafos.ai",
   "bin": {
     "pgo": "./bin/pgo"
@@ -62,7 +62,8 @@
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "gendocs": "oclif-dev readme",
     "test": "echo NO TESTS",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "postinstall": "pgo setup"
   },
   "types": "lib/index.d.ts",
   "oclif.macos.identifier": "ai.parago.cli"
