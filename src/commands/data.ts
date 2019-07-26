@@ -7,8 +7,7 @@
 //
 
 import Command    from '../base'
-import * as shell from 'shelljs'
-import Config from '../config';
+import * as ChildProcess from 'child_process'
 
 export default class Data extends Command {
   static description = "Data management using provided commands in config file";
@@ -19,19 +18,21 @@ export default class Data extends Command {
   ]
 
   static args = [
+    ...Command.args,
     {
       name: 'action',
-      description: 'Cleans data using command in config file',
-    },
-    {
-      name: 'load',
-      description: 'Loads data using command in config file'
+      required: true,
+      options: ['clean', 'load'],
+      description: 'Cleans or Loads data using command in config file'
     }
   ]
 
+  static flags = {
+    ...Command.flags
+  }
+
   runLoad() {
     let _parago:any = this.parago as any
-
     if(!_parago.commands.data.load || _parago.commands.data.load.length < 1) { 
       console.log("Invalid data load command provided in config")
 
@@ -43,7 +44,6 @@ export default class Data extends Command {
 
   runClean() {
     let _parago:any = this.parago as any
-
     if(!_parago.commands.data.clean || _parago.commands.data.clean.length < 1) { 
       console.log("Invalid data clean command provided in config")
 
@@ -55,9 +55,8 @@ export default class Data extends Command {
 
 
   async run() {
-    const {argv} = this.parse(Data)
 
-    argv.map((arg) => {
+    this.argv.map((arg) => {
       switch(arg.toLowerCase()) {
         case 'load': {
           return this.runLoad()
@@ -74,15 +73,15 @@ export default class Data extends Command {
     .forEach((current) => {
       var cmd:string = current as string
 
-      shell.config.silent = false
-
       if(cmd.startsWith('$')) {
-        shell.config.silent = true
-
         cmd = cmd.replace('$', '')
       }
 
-      shell.exec(cmd)  
+      let res = cmd.split(" ")
+      let commandName = res[0]
+      let cmdArgs = res.slice(1)
+
+      ChildProcess.execFileSync(commandName, cmdArgs, {stdio: 'inherit'});
     })
 
   }

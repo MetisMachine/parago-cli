@@ -6,7 +6,6 @@
 //  Copyright 2019 Skafos, LLC.
 //
 
-import * as shell from 'shelljs'
 import * as ChildProcess from 'child_process'
 import Command    from '../base'
 
@@ -17,6 +16,10 @@ export default class Deploy extends Command {
     `$ pgo deploy`
   ]
 
+  static flags = {
+    ...Command.flags
+  }
+  
   async run() {
     let _parago:any = this.parago as any
 
@@ -29,8 +32,6 @@ export default class Deploy extends Command {
     
     if(cmd.length > 0) {
       if(cmd.startsWith('$')) {
-        shell.config.silent = true
-        
         cmd = cmd.replace('$', '')
       }
       let res = cmd.split(" ")
@@ -40,9 +41,7 @@ export default class Deploy extends Command {
       // shelljs can't be used to run interactive commands 
       // https://github.com/shelljs/shelljs/wiki/FAQ#running-interactive-programs-with-exec
       ChildProcess.execFileSync(commandName, cmdArgs, {stdio: 'inherit'});
-      
-      
-      shell.config.silent = false
+
     } else {
       console.error("No config file or no deploy command defined")
 

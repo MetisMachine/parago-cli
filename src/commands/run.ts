@@ -7,7 +7,7 @@
 //
 
 import Command    from '../base'
-import * as shell from 'shelljs'
+import * as ChildProcess from 'child_process'
 
 export default class Run extends Command {
   static description = "Run user defined tasks in the config file";
@@ -18,21 +18,23 @@ export default class Run extends Command {
     `$ pgo run <task>`
   ]
 
+  static flags = {
+    ...Command.flags
+  }
+
   async run() {
     let _parago = this.parago as any
-    let {argv}  = this.parse(Run)
-    
 
-    if(argv.length < 1) { return }
+    if(this.argv.length < 1) { return }
 
-    let tasks = argv
+    let tasks = this.argv
     .filter((arg) => { return Object.keys(_parago.tasks).includes(arg)})
     .map((task) => {
       return _parago.tasks[task]
     });
 
     if(tasks.length < 1) {
-      console.log("Undefined task(s): ", argv.join(" "))
+      console.log("Undefined task(s): ", this.argv.join(" "))
 
       return
     }
@@ -40,15 +42,16 @@ export default class Run extends Command {
     tasks.forEach((task) => {
       var cmd = task
 
-      shell.config.silent = false
-
       if(cmd.startsWith('$')) {
-        shell.config.silent = true
-        
         cmd = cmd.replace('$', '')
       }
 
-      shell.exec(cmd)
+      let res = cmd.split(" ")
+      let commandName = res[0]
+      let cmdArgs = res.slice(1)
+
+      ChildProcess.execFileSync(commandName, cmdArgs, {stdio: 'inherit'});
+
     });
  }
 }

@@ -18,6 +18,10 @@ export default class Update extends Command {
   static examples = [
     `$ pgo update`
   ]
+  
+  static flags = {
+    ...Command.flags
+  }
 
   async run() {
     cli.action.start('Updating')

@@ -6,8 +6,8 @@
 //  Copyright 2019 Skafos, LLC.
 //
 
-import * as shell from 'shelljs'
 import Command    from '../base'
+import * as ChildProcess from 'child_process'
 
 export default class Train extends Command {
   static description = "Train model using defined command in config"
@@ -15,6 +15,10 @@ export default class Train extends Command {
   static examples = [
     `$ pgo train`
   ]
+
+  static flags = {
+    ...Command.flags
+  }
 
   async run() {
     let _parago:any = this.parago as any
@@ -28,14 +32,14 @@ export default class Train extends Command {
     
     if(cmd.length > 0) {
       if(cmd.startsWith('$')) {
-        shell.config.silent = true
-        
         cmd = cmd.replace('$', '')
       }
 
-      shell.exec(cmd)
-      
-      shell.config.silent = false
+      let res = cmd.split(" ")
+      let commandName = res[0]
+      let cmdArgs = res.slice(1)
+
+      ChildProcess.execFileSync(commandName, cmdArgs, {stdio: 'inherit'});
     } else {
       console.error("No config file or no train command defined")
 

@@ -18,7 +18,7 @@ export default class Create extends Command {
   static description = "Create a new Parago project";
 
   static examples = [
-    `$ pgo create myproject`
+    `$ pgo create myproject -g turicreate-image-classifier`
   ]
 
   static flags = {
@@ -41,7 +41,8 @@ export default class Create extends Command {
   }]
 
   async run() {
-    const {flags, args} = this.parse(Create);
+    const flags = this.flags
+    const args = this.args
 
     let generators = 
       fs.readdirSync(this.paths.generators, {withFileTypes: true})

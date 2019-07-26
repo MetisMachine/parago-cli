@@ -38,22 +38,21 @@ export default abstract class CommandBase extends Command {
 
   static args = []
 
-  flags = {}
-  args  = []
+  flags: { [name: string]: any }
+  args: { [name: string]: string }
+  argv: string[]
 
   processAdhocEnv(args:string = "") {
     if(args.length < 1) { return; }
 
     let adhocVars = args.split(',').map((index) => {
       let [key, val] = index.split('=')
-
       return {key: key, val: val}
     })
     .reduce((accum, curr) => {
       accum[curr.key] = curr.val
-
       return accum
-    })
+    }, {})
 
     for(let key in adhocVars) {
       this.envVars.set(key, adhocVars[key])
@@ -81,15 +80,16 @@ export default abstract class CommandBase extends Command {
 
   async init() {
     this.parago   = this.parago || Config.read() || Config.configTemplate
-    const {args, flags} = this.parse(CommandBase)
+    const {args, argv, flags} = this.parse(<Input<any>>this.constructor)
 
     this.processEnv();
-    
+
     if(flags.env && flags.env.length > 0) {
       this.processAdhocEnv(flags.env)
     }
-    
+
     this.flags  = flags
     this.args   = args
+    this.argv   = argv
   }
 }

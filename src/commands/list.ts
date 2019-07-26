@@ -17,12 +17,14 @@ export default class List extends Command {
   static description = "Shows a list of available generators."
 
   static examples = [
-    `$ pgo train`
+    `$ pgo list`
   ]
 
-  async run() {
-    const {flags} = this.parse(List)
+  static flags = {
+    ...Command.flags
+  }
 
+  async run() {
     cli.action.start('Pulling generators list')
     await cli.wait(1000)
 
