@@ -50,6 +50,6 @@ export class Python extends Environment {
   }
 
   async setup(directory:string = process.cwd()) {
-    console.log("Your environment has been setup for Python.")
+   
   }
 }

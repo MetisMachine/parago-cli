@@ -13,11 +13,7 @@ import {safeDump} from 'js-yaml';
 const WriteYaml = (obj:object, to:string) => {
   let data:string = safeDump(obj);
   
-  fs.writeFile(to, data, (err) => {
-    if(err) {
-      console.error("Write File Error: ", err);
-    }
-  });
+  fs.writeFileSync(to, data)
 }
 
 export default WriteYaml;

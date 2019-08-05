@@ -15,5 +15,6 @@ tmp
 .venv
 
 ## Node/Typescript
+.nyc_output
 node_modules
 static/components/*
