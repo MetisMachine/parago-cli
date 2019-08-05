@@ -52,12 +52,6 @@ const ConfigCreate = async (cfg, projectPath:string = process.cwd(), ask:boolean
   cli.action.start("Creating config file...")
   Config.write(config, projectPath)
   cli.action.stop()
-
-  if(language.toLowerCase().split(' ').includes('python')) {
-    cli.action.start("Setting up python virtual environment\n")
-    SetupPython() 
-    cli.action.stop()
-  }
 }
 
 export default ConfigCreate
