@@ -33,15 +33,12 @@ export default class Setup extends Command {
   }
 
   async run() {
-    const {flags} = this.parse(Setup)
-
-
     let home = os.homedir()
     let root = path.join(home, '.parago')
     let repo = path.join(root, 'generators')
 
     if(fs.pathExistsSync(root)) {
-      if(flags.force == true) {
+      if(this.flags.force == true) {
         fs.removeSync(root)
       } else {
         console.log("Parago has already been setup, use -f/--force to overwrite current")

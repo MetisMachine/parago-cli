@@ -13,7 +13,7 @@ import {Input}          from '@oclif/parser'
 import Config           from './config'
 import EnvVars          from './env/vars'
 
-export default abstract class CommandBase extends Command {
+export default abstract class extends Command {
   static strict = false
 
   paths = {
@@ -38,9 +38,9 @@ export default abstract class CommandBase extends Command {
 
   static args = []
 
-  flags: { [name: string]: any }
-  args: { [name: string]: string }
-  argv: string[]
+  flags:  { [name: string]: any }
+  args:   { [name: string]: string }
+  argv:   string[]
 
   processAdhocEnv(args:string = "") {
     if(args.length < 1) { return; }
