@@ -10,6 +10,7 @@ thumbs.db
 ## Build
 dist
 tmp
+lib
 
 ## Testing
 .venv
